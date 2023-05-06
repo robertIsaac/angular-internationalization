@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-internationalization",
+            "outputPath": "dist/angular-internationalization/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -104,6 +104,61 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/angular-internationalization/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "angular-internationalization:build:development",
+              "serverTarget": "angular-internationalization:server:development"
+            },
+            "production": {
+              "browserTarget": "angular-internationalization:build:production",
+              "serverTarget": "angular-internationalization:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-internationalization:build:production",
+              "serverTarget": "angular-internationalization:server:production"
+            },
+            "development": {
+              "browserTarget": "angular-internationalization:build:development",
+              "serverTarget": "angular-internationalization:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
