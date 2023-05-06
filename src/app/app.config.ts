@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter, withDisabledInitialNavigation } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -10,6 +10,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { localizeLoaderFactory } from './core/utils/localize-loader-factory';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
 import { Location } from '@angular/common';
+import { initializeDirectionFactory } from './core/utils/initialize-direction.factory';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,5 +36,10 @@ export const appConfig: ApplicationConfig = {
         initialNavigation: true,
       }),
     ),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeDirectionFactory,
+      multi: true,
+    },
   ]
 };
