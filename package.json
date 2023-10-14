@@ -7,10 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run angular-internationalization:serve-ssr",
-    "serve:ssr": "node dist/angular-internationalization/server/main.js",
-    "build:ssr": "ng build && ng run angular-internationalization:server",
-    "prerender": "ng run angular-internationalization:prerender"
+    "serve:ssr": "node dist/angular-internationalization/server.mjs"
   },
   "private": true,
   "dependencies": {
