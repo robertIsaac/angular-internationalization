@@ -18,7 +18,7 @@
     "@angular/forms": "^17.0.5",
     "@angular/platform-browser": "^17.0.5",
     "@angular/platform-browser-dynamic": "^17.0.5",
-    "@angular/platform-server": "^17.0.5",
+    "@angular/platform-server": "^19.2.25",
     "@angular/router": "^17.0.5",
     "@angular/ssr": "^17.0.5",
     "@gilsdav/ngx-translate-router": "^6.1.0",
